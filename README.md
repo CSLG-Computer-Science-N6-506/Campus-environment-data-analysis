@@ -122,4 +122,4 @@ plt.show()
  
  * 校正后的传感器大气压数据
   
-  <img src = 'img/Correcting_Pressure_N1_3.jpg>
+  <img src = 'img/Correcting_Pressure_N1_3.jpg'>
