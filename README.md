@@ -124,6 +124,10 @@ plt.show()
  
  <img src = 'img/Original_Pressure_N1_3.jpg'>
  
+ * 校正数据可视化
+ 
+ <img src = 'img/Correcting_Data_Pressure_N1_3.jpg'>
+ 
  * 校正后的传感器大气压数据可视化
   
   <img src = 'img/Correcting_Pressure_N1_3.jpg'>
