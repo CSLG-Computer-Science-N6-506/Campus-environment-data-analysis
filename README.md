@@ -119,5 +119,7 @@ plt.show()
   ```
 
   <img src = 'img/Pressure_N1_3.jpg'>
-  * 校正后的传感器大气压数据
+ 
+ * 校正后的传感器大气压数据
+  
   <img src = 'img/Correcting_Pressure_N1_3.jpg>
