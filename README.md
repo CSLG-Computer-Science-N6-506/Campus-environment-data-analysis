@@ -203,14 +203,19 @@ plt.show()
   * 校正后误差值 = 校正值 - 校正平均值
 
 ```python
-# 通过误差值对传感器进行校正
-Pressure_N1_3_Correcting_1 = Pressure.loc[:,Pressure_Labels_N1_3]
+# 计算校正后传感器误差数据并可视化
+Pressure_N1_3_Correcting_Mean = Pressure_N1_3_Correcting_1.mean(axis = 1)
+# Pressure_N1_3_Correcting_1 校正后的大气压数值
 for i in range(len(Pressure_Labels_N1_3)):
-    # 校正数据 = 原大气压数据 - 误差平均值
-    Pressure_N1_3_Correcting_1[Pressure_Labels_N1_3[i]] -= Pressure_N1_3_ErrorValue[Pressure_Labels_N1_3[i]].mean()
+    # 校正误差值 = 校正值 - 校正平均值
+    Pressure_N1_3_Correcting_1[Pressure_Labels_N1_3[i]] -=  Pressure_N1_3_Correcting_Mean
+    # '3的塔'准则过滤校正后误差异常值
+    Min = Pressure_N1_3_Correcting_1[Pressure_Labels_N1_3[i]].mean() - 3 * Pressure_N1_3_Correcting_1[Pressure_Labels_N1_3[i]].std()
+    Max = Pressure_N1_3_Correcting_1[Pressure_Labels_N1_3[i]].mean() + 3 * Pressure_N1_3_Correcting_1[Pressure_Labels_N1_3[i]].std()
+    Pressure_N1_3_Correcting_1[Pressure_Labels_N1_3[i]] = Pressure_N1_3_Correcting_1[Pressure_Labels_N1_3[i]][(Min < Pressure_N1_3_Correcting_1[Pressure_Labels_N1_3[i]]) & (Pressure_N1_3_Correcting_1[Pressure_Labels_N1_3[i]] < Max)]
 plt.plot(Time_Series,Pressure_N1_3_Correcting_1)
 plt.legend(Pressure_Labels_N1_3)
-plt.title('2020/9/16-2021/3/9 N1 _ 3 after Correcting Pressure Change(data update every 10 minutes)')
+plt.title('2020/9/16-2021/3/9  Pressure_N1 _ 3 _ Correcting ErrorValue Change(data update every 10 minutes)')
 plt.xlabel('2020/9/16 9:20-2021/3/9 9:50')
 plt.ylabel('Pressure_value')
 plt.show()
