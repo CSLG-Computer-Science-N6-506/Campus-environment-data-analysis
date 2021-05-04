@@ -201,7 +201,7 @@ plt.show()
 <img src = 'img/End_Pressure_N1_3_Correcting.jpg'>
 * 计算校正后传感器误差数据
   * 校正后误差值 = 校正值 - 校正平均值
-```python
+*```python
 # 计算校正后传感器误差数据并可视化
 Pressure_N1_3_Correcting_Mean = Pressure_N1_3_Correcting_1.mean(axis = 1)
 # Pressure_N1_3_Correcting_1 校正后的大气压数值
